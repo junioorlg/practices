@@ -1,0 +1,16 @@
+review = 
+  {
+    "bookId" : 101,
+    "author" : "John",
+    "content" : "Great book!"
+  },
+  {
+    "bookId" : 101,
+    "author" : "Alice",
+    "content" : "Worth reading."
+  },
+  {
+    "bookId" : 102,
+    "author" : "Joe",
+    "content" : "Waste of time :("
+  }
