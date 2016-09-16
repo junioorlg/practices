@@ -1,8 +1,6 @@
 'use strict';
 
-var booksData = JSON.parse(data),
-	/*reviewsData = JSON.parse(review),*/
-	book = [
+var book = [
 	  {
 	    "id" : 101,
 	    "title" : "Some book title"
@@ -36,29 +34,18 @@ var booksData = JSON.parse(data),
 	arrayList = [], 
 	obj_c_processed = [];
 
-for (var b in book) {
-    var obj = {id: book[b].id, title: book[b].title};
-    
-    for (var r in review) {
-        if (book[b].id == review[r].bookId) {
-            obj.review = {author: review[r].author, content: review[r].content}
-        }
-    }
-    arrayList.push(obj);
-    console.log(obj);
-}
+
 /*for (var r in review){
     if (typeof obj_c_processed[review[r].id] == 'undefined') {
         arrayList.push({id: review[r].id, author: review[r].author, content: review[r].content, content: 'no', circle: review[r].circle});
     }
 }*/
 
-console.log(booksData);
-
 
 var BookWithReviews = function(id, title) {
   this.id = id;
   this.title = title;
+
   this.reviews = [];
 
   this.addReview = function(author, content) {
@@ -79,9 +66,22 @@ var BookWithReviews = function(id, title) {
  * @returns {Array} - an array of BookWithReviews objects
  */
 function parseBooksData(books, reviews) {
-  return [];  // TODO: Implement
-}
+	var arrayObj = [];
+	for (var b in books) {
+		var obj = {id: books[b].id, title: books[b].title};
 
+		for (var r in reviews) {
+		    if (books[b].id == reviews[r].bookId) {
+		    	arrayObj = {author: reviews[r].author, content: reviews[r].content};
+		    }
+
+		}
+		arrayList.push(obj);
+		console.log(obj);
+	}
+}
+/* investigar http://jsfiddle.net/heera/hPMEG/1/ */
+parseBooksData(book, review)
 /**
  * Displays data from passed `books` array. For example, if books argument would have following value:
  *    books = [ { id: 101, title: "Some book title", reviews : [ { author: "John", content: "Great book!" }] } ];
