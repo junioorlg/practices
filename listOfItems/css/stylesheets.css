@@ -1,0 +1,11 @@
+.boxHeader h1{
+	color: #fff
+}
+.boxArticles {
+	padding: 10px;
+	border-radius: 10px;
+}
+.boxArticles .panel{
+    float: right;
+    display: none;
+}
