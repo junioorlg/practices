@@ -68,16 +68,16 @@ var BookWithReviews = function(id, title) {
 function parseBooksData(books, reviews) {
 	var arrayObj = [];
 	for (var b in books) {
-		var obj = {id: books[b].id, title: books[b].title};
+		var obj = {id: books[b].id, title: books[b].title, review: ""};
 
 		for (var r in reviews) {
 		    if (books[b].id == reviews[r].bookId) {
-		    	arrayObj = {author: reviews[r].author, content: reviews[r].content};
+		    	arrayObj.push({author: reviews[r].author, content: reviews[r].content});
 		    }
-
 		}
-		arrayList.push(obj);
+		obj.review=arrayObj;
 		console.log(obj);
+		var arrayObj = [];
 	}
 }
 /* investigar http://jsfiddle.net/heera/hPMEG/1/ */
