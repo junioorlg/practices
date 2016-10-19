@@ -65,31 +65,33 @@
 				</ul>-->
 			</div>
 			<div class="boxForm col l3 offset-l1 white">
-				<div class="row">
-					<div class="col l12 center-align">
-						<b>ADD NEW GAME</b>
+				<form action="" name="formAdd" id="formAdd" method="post">
+					<div class="row">
+						<div class="col l12 center-align">
+							<b>ADD NEW GAME</b>
+						</div>
+						<div class="col l12 input-field">
+							<input id="title" type="text" name="title" class="validate">
+							<label for="title">Title</label>
+						</div>
+						<div class="col l12 input-field">
+							<input id="description" type="text" name="description" class="validate">
+							<label for="description">Description</label>
+						</div>
+						<div class="col l12 file-field input-field marginBottom">
+						  <div class="btn blue darken-3">
+						    <span>Image</span>
+						    <input type="file" name="img" accept="image/x-png, image/gif, image/jpeg">
+						  </div>
+						  <div class="file-path-wrapper">
+						    <input class="file-path validate" type="text">
+						  </div>
+						</div>
+						<div class="col l6 offset-l3 center-align">
+							<button class="btn blue darken-3 waves-effect waves-light" type="submit" name="action">ADD</button>
+						</div>
 					</div>
-					<div class="col l12 input-field">
-						<input id="title" type="text" class="validate">
-						<label for="title">Title</label>
-					</div>
-					<div class="col l12 input-field">
-						<input id="description" type="text" class="validate">
-						<label for="description">Description</label>
-					</div>
-					<div class="col l12 file-field input-field marginBottom">
-					  <div class="btn blue darken-3">
-					    <span>Image</span>
-					    <input type="file">
-					  </div>
-					  <div class="file-path-wrapper">
-					    <input class="file-path validate" type="text">
-					  </div>
-					</div>
-					<div class="col l6 offset-l3">
-						<a class="waves-effect waves-light btn blue darken-3">ADD</a>
-					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
