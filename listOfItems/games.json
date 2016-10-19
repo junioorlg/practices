@@ -1,0 +1,20 @@
+[
+	{
+		"id" : "1",
+		"img" : "media/horizon.jpg",
+		"title" : "Horizon",
+		"description" : "Este es el juego Horizon"
+	},
+	{
+		"id" : "2",
+		"img" : "media/division.jpg",
+		"title" : "The division",
+		"description" : "Este es el juego The division"
+	},
+	{
+		"id" : "3",
+		"img" : "media/fifa17.jpg",
+		"title" : "Fifa 17",
+		"description" : "Este es el juego Fifa 17"
+	}
+]
