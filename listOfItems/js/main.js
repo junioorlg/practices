@@ -1,21 +1,3 @@
-/*var serializeObject = function () {
-	var oJson = {},
-		oArray = this.serializeArray();
-	
-	$.each(a, function(){
-		if(oJson[this.name] !== undefined){
-			if(!oJson[this.name].push){
-				oJson[this.name] = [oJson[this.name]];
-			}
-			oJson[this.name].push(this.value || '');
-		}else{
-			oJson[this.name] = this.name || '';
-		}
-	});
-
-	return oJson;
-}*/
-
 $.getJSON("games.json", function(json) {
 	var output = '<ul id="sortable1" class="connectedSortable">';
 	for (i in json){
@@ -41,7 +23,7 @@ $.getJSON("games.json", function(json) {
 	console.log(json);*/
 });
 
-/* http://jsfiddle.net/sxGtM/3/ --> save json */
+/* http://stackoverflow.com/questions/4538269/adding-removing-items-from-json-data-with-jquery --> save json */
 $(function(){
 	$("#sortable1").sortable({
 		connectWith: ".connectedSortable"
@@ -61,44 +43,25 @@ $(function(){
 		$(this).parent().parent().parent().parent().hide()
 	})
 
-    /*$('#formAdd').submit(function() {
-        $('#result').text(JSON.stringify($('form').serializeObject()));
+    $('form').submit(function() {
+        console.log(JSON.stringify($('form').serializeObject()));
         return false;
-    });*/
+    });
 });
 
-$("#formAdd").submit(function(e){
-
-    e.preventDefault();
-
-    var data = {}
-    var Form = this;
-
-    //Gathering the Data
-    //and removing undefined keys(buttons)
-    $.each(this.elements, function(i, v){
-		var input = $(v);
-		data[input.attr("name")] = input.val();
-		delete data["undefined"];
-    });
-
-    //Form Validation goes here....
-
-    //Save Form Data........
-    $.ajax({
-        cache: false,
-        url : "http://localhost/git/practices/listOfItems/",
-        type: "POST",
-        dataType : "json",
-        data : JSON.stringify(data),
-        context : Form,
-        success : function(callback){
-            //Where $(this) => context == FORM
-            console.log(JSON.parse(callback));
-            $(this).html("Success!");
-        },
-        error : function(){
-            $(this).html("Error!");
+$.fn.serializeObject = function()
+{
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
         }
     });
-});
+    return o;
+};
