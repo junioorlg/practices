@@ -1,7 +1,7 @@
 $.getJSON("games.json", function(json) {
 	var output = '<ul id="sortable1" class="connectedSortable">';
 	for (i in json){
-		output += '<li>';
+		output += '<li id="' + json[i].id + '">';
 		output += 	'<div class="row boxArticles white">';
 		output += 		'<div class="col l2 imgArticles">';
 		output += 			'<img class="responsive-img" src="' + json[i].img + '" alt="">';
@@ -42,26 +42,27 @@ $(function(){
 	$('.ui-sortable-handle .delete').on("click", function(){
 		$(this).parent().parent().parent().parent().hide()
 	})
-
-    $('form').submit(function() {
-        console.log(JSON.stringify($('form').serializeObject()));
-        return false;
-    });
 });
 
-$.fn.serializeObject = function()
-{
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name] !== undefined) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
-        } else {
-            o[this.name] = this.value || '';
-        }
-    });
-    return o;
-};
+		var retrievedObject = localStorage.getItem('testObject');
+
+		console.log('retrievedObject: ', JSON.parse(retrievedObject));
+// add form to json file and add items to the view
+document.getElementById("btnSubmit").addEventListener("click", addItem);
+
+function addItem () {
+	$.getJSON("games.json", function(json) {
+		var newGame = {};
+		newGame.id = Object.keys(json).length + 1;
+		newGame.img =  "media/" + $('#img').val().substr(12, $('#img').val().length + 1);
+		newGame.title = $('#title').val();
+		newGame.description = $('#description').val();
+	    json.push(newGame);
+
+	    localStorage.setItem('testObject', JSON.stringify(json));
+		var retrievedObject = localStorage.getItem('testObject');
+
+		console.log('retrievedObject: ', JSON.parse(retrievedObject));
+	});
+
+}
